@@ -46,6 +46,10 @@ public class HijackSessionAssignment implements AssignmentEndpoint {
       @CookieValue(value = COOKIE_NAME, required = false) String cookieValue,
       HttpServletResponse response) {
 
+    if (StringUtils.isBlank(username)) {
+      return failed(this).build();
+    }
+
     Authentication authentication;
     if (StringUtils.isEmpty(cookieValue)) {
       authentication =
