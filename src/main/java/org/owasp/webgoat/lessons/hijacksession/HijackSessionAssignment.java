@@ -66,6 +66,7 @@ public class HijackSessionAssignment implements AssignmentEndpoint {
   private void setCookie(HttpServletResponse response, String cookieValue) {
     Cookie cookie = new Cookie(COOKIE_NAME, cookieValue);
     cookie.setPath("/WebGoat");
+    cookie.setMaxAge(1800);
     cookie.setSecure(true);
     response.addCookie(cookie);
   }
