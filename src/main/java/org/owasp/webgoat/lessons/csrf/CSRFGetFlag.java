@@ -48,7 +48,7 @@ public class CSRFGetFlag {
         response.put("message", pluginMessages.getMessage("csrf-get-other-referer.success"));
         response.put("flag", userSessionData.getValue("csrf-get-success"));
       }
-    } else if (refererArr[2].equals(host)) {
+    } else if (refererArr.length > 2 && refererArr[2].equals(host)) {
       response.put("success", false);
       response.put("message", "Appears the request came from the original host");
       response.put("flag", null);
