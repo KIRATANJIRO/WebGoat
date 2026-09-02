@@ -67,7 +67,8 @@ public class ProfileUploadBase implements AssignmentEndpoint {
 
   @SneakyThrows
   protected File cleanupAndCreateDirectoryForUser(String username) {
-    var uploadDirectory = new File(this.webGoatHomeDirectory, "/PathTraversal/" + username);
+    var safeUsername = FilenameUtils.getName(username);
+    var uploadDirectory = new File(this.webGoatHomeDirectory, "/PathTraversal/" + safeUsername);
     if (uploadDirectory.exists()) {
       FileSystemUtils.deleteRecursively(uploadDirectory);
     }
